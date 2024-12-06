@@ -92,12 +92,6 @@ Abra um Pull Request.
 Repositório no GitHub: https://github.com/seu-usuario/TaskManagementApp
 Aplicação Web: http://localhost:5216/Tasks
 
-### Notas:
-- Esse **README** foi feito em Markdown para ser usado no GitHub ou outras plataformas que suportem esse formato.
-- É direto ao ponto e cobre todos os aspectos importantes, desde configuração até funcionalidades.
-- Atualize os links e os detalhes do banco de dados para refletir o ambiente real do projeto.
-
-
 
 
 
