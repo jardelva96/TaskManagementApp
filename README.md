@@ -21,7 +21,7 @@ Este é um projeto de gerenciamento de tarefas (Task Management App) desenvolvid
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/TaskManagementApp.git
+   git clone https://github.com/jardel96/TaskManagementApp.git
    cd TaskManagementApp
 
 
@@ -88,7 +88,7 @@ git push origin minha-feature
 Abra um Pull Request.
 
 🔗 Links Importantes
-Repositório no GitHub: https://github.com/seu-usuario/TaskManagementApp
+Repositório no GitHub: https://github.com/jardel96/TaskManagementApp
 Aplicação Web: http://localhost:5216/Tasks
 
 ## 📁 Estrutura do Projeto
