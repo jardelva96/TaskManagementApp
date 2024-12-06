@@ -1,0 +1,46 @@
+@model TaskManagementApp.Models.TaskItem
+
+<div class="container mt-5">
+    <div class="card p-4 shadow">
+        <h1 class="text-center text-gradient mb-4">✨ Editar Tarefa</h1>
+        <form asp-action="Edit" method="post">
+            <input asp-for="Id" type="hidden" />
+            
+            <div class="form-group">
+                <label for="Title">Título</label>
+                <input asp-for="Title" class="form-control" placeholder="Digite o título da tarefa" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="Description">Descrição</label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Digite a descrição da tarefa"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="Priority">Prioridade</label>
+                <select asp-for="Priority" class="form-control">
+                    <option value="Low">Baixa</option>
+                    <option value="Medium">Média</option>
+                    <option value="High">Alta</option>
+                </select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="Status">Status</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Pending">Pendente</option>
+                    <option value="Completed">Concluída</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <button type="submit" class="btn btn-warning">Atualizar Tarefa</button>
+            </div>
+        </form>
+    </div>
+</div>

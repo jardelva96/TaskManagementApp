@@ -1,0 +1,286 @@
+@model IEnumerable<TaskManagementApp.Models.TaskItem>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Tarefas</title>
+    <style>
+        /* Estilo Geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-form {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .task-form input,
+        .task-form select,
+        .task-form button {
+            margin: 10px 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .task-form button {
+            background-color: #0055a5;
+            color: white;
+            cursor: pointer;
+        }
+
+        .task-form button:hover {
+            background-color: #002244;
+        }
+
+        .task-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .task-table th,
+        .task-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .task-table th {
+            background-color: #003366;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            color: white;
+            background-color: #0055a5;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #002244;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestão de Tarefas</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário para Adicionar Tarefas -->
+        <section class="task-form">
+            <h2>Adicionar Nova Tarefa</h2>
+            <form id="addTaskForm">
+                <input type="text" id="title" placeholder="Título" required>
+                <input type="text" id="description" placeholder="Descrição">
+                <select id="priority">
+                    <option value="Low">Baixa</option>
+                    <option value="Medium">Média</option>
+                    <option value="High">Alta</option>
+                </select>
+                <select id="status">
+                    <option value="Pending">Pendente</option>
+                    <option value="Completed">Concluída</option>
+                </select>
+                <button type="button" onclick="addTask()">Salvar</button>
+            </form>
+        </section>
+
+        <!-- Tabela de Tarefas -->
+        <section>
+            <h2>📋 Lista de Tarefas</h2>
+            <table class="task-table" id="tasksTable">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Prioridade</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As tarefas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botões de Importar e Exportar -->
+        <section class="task-form">
+            <button class="btn" onclick="exportToCSV()">Exportar para CSV</button>
+            <input type="file" id="fileInput" onchange="importFromCSV(event)" style="margin-top: 10px;">
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Gestão de Tarefas. Todos os direitos reservados.</p>
+        <a href="/">Política de Privacidade</a>
+        <a href="/">Termos de Uso</a>
+    </footer>
+
+    <script>
+        const tasks = [];
+
+        function addTask() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const priority = document.getElementById('priority').value;
+            const status = document.getElementById('status').value;
+
+            if (!title) {
+                alert("O título é obrigatório!");
+                return;
+            }
+
+            const newTask = {
+                id: tasks.length + 1,
+                title,
+                description,
+                priority,
+                status,
+                createdAt: new Date().toLocaleDateString()
+            };
+
+            tasks.push(newTask);
+            renderTasks();
+            document.getElementById('addTaskForm').reset();
+        }
+
+        function deleteTask(id) {
+            const index = tasks.findIndex(task => task.id === id);
+            if (index !== -1) {
+                tasks.splice(index, 1);
+                renderTasks();
+            }
+        }
+
+        function renderTasks() {
+            const tableBody = document.getElementById('tasksTable').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = "";
+
+            tasks.forEach(task => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${task.title}</td>
+                    <td>${task.description}</td>
+                    <td>${task.priority}</td>
+                    <td>${task.status}</td>
+                    <td>${task.createdAt}</td>
+                    <td>
+                        <button class="btn" onclick="deleteTask(${task.id})">Excluir</button>
+                    </td>`;
+            });
+        }
+
+        function exportToCSV() {
+            const csvRows = [];
+            const headers = ['Título', 'Descrição', 'Prioridade', 'Status', 'Data'];
+            csvRows.push(headers.join(','));
+
+            tasks.forEach(task => {
+                const row = [
+                    task.title,
+                    task.description,
+                    task.priority,
+                    task.status,
+                    task.createdAt
+                ];
+                csvRows.push(row.join(','));
+            });
+
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'tarefas.csv';
+            link.click();
+        }
+
+        function importFromCSV(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                const rows = content.split('\n');
+                const header = rows.shift().split(',');
+
+                rows.forEach(row => {
+                    const columns = row.split(',');
+                    if (columns.length === header.length) {
+                        const task = {
+                            id: tasks.length + 1,
+                            title: columns[0],
+                            description: columns[1],
+                            priority: columns[2],
+                            status: columns[3],
+                            createdAt: columns[4]
+                        };
+                        tasks.push(task);
+                    }
+                });
+
+                renderTasks();
+            };
+
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>

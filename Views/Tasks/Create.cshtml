@@ -1,0 +1,249 @@
+@model TaskManagementApp.Models.TaskItem
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Tarefa</title>
+    <style>
+        /* Estilo Geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn-primary, .btn-secondary, .btn-action {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #003366;
+        }
+
+        .btn-primary:hover {
+            background-color: #002244;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bbb;
+        }
+
+        .btn-action {
+            margin: 5px;
+            background-color: #0055a5;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✨ Criar Nova Tarefa</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário -->
+        <form asp-action="Create" method="post" id="createTaskForm">
+            <div class="form-group">
+                <label for="Title">Título</label>
+                <input asp-for="Title" class="form-control" placeholder="Digite o título da tarefa" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Descrição</label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Digite a descrição da tarefa"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Priority">Prioridade</label>
+                <select asp-for="Priority" class="form-control">
+                    <option value="Low">Baixa</option>
+                    <option value="Medium">Média</option>
+                    <option value="High">Alta</option>
+                </select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Status">Status</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Pending">Pendente</option>
+                    <option value="Completed">Concluída</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <!-- Botões -->
+            <div class="form-group d-flex justify-content-between">
+                <a href="/Tasks" class="btn-secondary">Voltar</a>
+                <button type="submit" class="btn-primary">Salvar Tarefa</button>
+            </div>
+        </form>
+
+        <!-- Mensagem de Erro ou Sucesso -->
+        <div id="messageBox" class="message-box" style="display: none;"></div>
+    </div>
+
+    <!-- Adicionar Botões e Funções -->
+    <div class="container">
+        <h2>⚙️ Funções Extras</h2>
+        <button class="btn-action" onclick="deleteAllTasks()">Excluir Todas</button>
+        <button class="btn-action" onclick="markAllCompleted()">Marcar Todas como Concluídas</button>
+        <button class="btn-action" onclick="sortTasks()">Ordenar Tarefas</button>
+        <button class="btn-action" onclick="filterTasks('High')">Filtrar Alta Prioridade</button>
+        <button class="btn-action" onclick="resetFilters()">Redefinir Filtros</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Gestão de Tarefas - Todos os direitos reservados.</p>
+        <a href="/">Política de Privacidade</a>
+    </footer>
+
+    <script>
+        // Função para enviar o formulário e exibir mensagens de sucesso ou erro
+        document.getElementById("createTaskForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const form = e.target;
+
+            // Enviar os dados via fetch (exemplo de uso JS)
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(form)
+            }).then(response => {
+                if (response.ok) {
+                    showMessage("Tarefa criada com sucesso!", "success");
+                } else {
+                    showMessage("Erro ao criar a tarefa.", "error");
+                }
+            }).catch(() => {
+                showMessage("Erro ao conectar ao servidor.", "error");
+            });
+        });
+
+        function showMessage(message, type) {
+            const messageBox = document.getElementById("messageBox");
+            messageBox.textContent = message;
+            messageBox.className = "message-box " + type;
+            messageBox.style.display = "block";
+
+            setTimeout(() => {
+                messageBox.style.display = "none";
+            }, 3000);
+        }
+
+        // Funções Extras
+        function deleteAllTasks() {
+            alert("Função: Excluir Todas as Tarefas!");
+        }
+
+        function markAllCompleted() {
+            alert("Função: Marcar Todas como Concluídas!");
+        }
+
+        function sortTasks() {
+            alert("Função: Ordenar Tarefas!");
+        }
+
+        function filterTasks(priority) {
+            alert(`Função: Filtrar por Prioridade (${priority})!`);
+        }
+
+        function resetFilters() {
+            alert("Função: Redefinir Filtros!");
+        }
+    </script>
+</body>
+</html>
