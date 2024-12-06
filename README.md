@@ -42,8 +42,8 @@ TaskManagementApp/
 ├── appsettings.json                   # Configurações gerais do projeto
 ├── Program.cs                         # Configuração inicial do ASP.NET Core
 ├── TaskManagementApp.csproj           # Arquivo de configuração do projeto
-├── launchSettings.json                # Configurações de execução (portas e ambiente)
-├── README.md                          # Documentação do projeto
+- ├── launchSettings.json                # Configurações de execução (portas e ambiente)
+- ├── README.md                          # Documentação do projeto
 
 ### Passos para Execução
 
