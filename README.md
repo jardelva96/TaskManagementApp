@@ -6,9 +6,7 @@ Este é um projeto de gerenciamento de tarefas (Task Management App) desenvolvid
 - **ASP.NET Core**: Framework para desenvolvimento de aplicações web.
 - **Entity Framework Core**: ORM para interagir com o banco de dados.
 - **SQL Server** (ou outro banco de dados configurado): Banco de dados relacional.
-- 
-## Estrutura do Projeto
-TaskManagementApp/ ├── Controllers/ │ ├── TasksController.cs # Controlador para o frontend (Razor Pages) │ ├── TasksApiController.cs # Controlador para a API RESTful │ ├── Data/ │ ├── ApplicationDbContext.cs # Contexto do Entity Framework Core │ ├── Models/ │ ├── TaskItem.cs # Modelo de dados para as tarefas │ ├── Services/ │ ├── ITaskService.cs # Interface para o serviço de tarefas │ ├── TaskService.cs # Implementação do serviço de tarefas │ ├── Views/ │ ├── Tasks/ │ │ ├── Index.cshtml # Página inicial com a lista de tarefas │ │ ├── Create.cshtml # Página para criação de novas tarefas │ │ ├── Edit.cshtml # Página para edição de tarefas │ │ ├── Delete.cshtml # Página para confirmação de exclusão │ │ │ ├── Shared/ │ ├── _Layout.cshtml # Layout compartilhado entre as páginas │ ├── _ValidationScriptsPartial.cshtml # Scripts para validação │ ├── wwwroot/ │ ├── css/ # Arquivos de estilo CSS │ ├── js/ # Arquivos JavaScript │ ├── lib/ # Bibliotecas externas (Bootstrap, DataTables, etc.) │ ├── appsettings.json # Configurações gerais do projeto ├── Program.cs # Configuração inicial do ASP.NET Core ├── launchSettings.json # Configurações de execução (portas e ambiente) ├── TaskManagementApp.csproj # Arquivo de configuração do projeto ├── README.md # Documentação do projeto
+
 ### Passos para Execução
 
 ## 🚀 Como Configurar e Executar o Projeto
@@ -93,6 +91,45 @@ Abra um Pull Request.
 Repositório no GitHub: https://github.com/seu-usuario/TaskManagementApp
 Aplicação Web: http://localhost:5216/Tasks
 
+## 📁 Estrutura do Projeto
+
+```plaintext
+TaskManagementApp/                     # Pasta principal do projeto
+├── Controllers/                       # Controladores para gerenciamento da lógica
+│   ├── TasksController.cs             # Controlador para o frontend (Razor Pages)
+│   ├── TasksApiController.cs          # Controlador para a API RESTful
+│
+├── Data/                              # Configurações relacionadas ao banco de dados
+│   ├── ApplicationDbContext.cs        # Contexto do banco de dados do Entity Framework Core
+│
+├── Models/                            # Modelos de dados
+│   ├── TaskItem.cs                    # Modelo de entidade para tarefas
+│
+├── Services/                          # Camada de serviço para lógica de negócios
+│   ├── ITaskService.cs                # Interface do serviço de tarefas
+│   ├── TaskService.cs                 # Implementação do serviço de tarefas
+│
+├── Views/                             # Views para o frontend (Razor Pages)
+│   ├── Tasks/
+│   │   ├── Index.cshtml               # Página principal com a lista de tarefas
+│   │   ├── Create.cshtml              # Página para criação de novas tarefas
+│   │   ├── Edit.cshtml                # Página para edição de tarefas
+│   │   ├── Delete.cshtml              # Página para confirmação de exclusão de tarefas
+│   │
+│   ├── Shared/                        # Componentes de views compartilhados
+│       ├── _Layout.cshtml             # Layout principal compartilhado
+│       ├── _ValidationScriptsPartial.cshtml  # Scripts de validação para Razor Pages
+│
+├── wwwroot/                           # Arquivos estáticos do projeto
+│   ├── css/                           # Arquivos de estilo (CSS)
+│   ├── js/                            # Arquivos JavaScript
+│   ├── lib/                           # Bibliotecas externas (Bootstrap, DataTables, etc.)
+│
+├── appsettings.json                   # Configurações gerais do projeto
+├── Program.cs                         # Ponto de entrada da aplicação ASP.NET Core
+├── launchSettings.json                # Configurações de execução (portas e ambiente)
+├── TaskManagementApp.csproj           # Arquivo de configuração do projeto
+├── README.md                          # Documentação do projeto
 
 
 
