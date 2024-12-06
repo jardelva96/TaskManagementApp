@@ -1,89 +1,104 @@
-# TaskManagementApp
+# Task Management App
 
-### Aplicação de Gestão de Tarefas com ASP.NET Core
+Este é um projeto de gerenciamento de tarefas (Task Management App) desenvolvido com ASP.NET Core. O objetivo é fornecer uma plataforma simples e eficiente para a gestão de tarefas, permitindo a criação, visualização e exclusão de tarefas.
 
----
+## Tecnologias Utilizadas
+- **ASP.NET Core**: Framework para desenvolvimento de aplicações web.
+- **Entity Framework Core**: ORM para interagir com o banco de dados.
+- **SQL Server** (ou outro banco de dados configurado): Banco de dados relacional.
+- **Swagger**: Ferramenta para documentar e testar a API.
+- **Autenticação e Autorização**: Utiliza autenticação baseada em JWT (JSON Web Token) para garantir a segurança.
 
-## 📝 Descrição
-O **TaskManagementApp** é uma aplicação web desenvolvida em **ASP.NET Core MVC**, com suporte a Razor Pages e uma API RESTful para o gerenciamento de tarefas. Ele permite criar, editar, excluir e visualizar tarefas de forma eficiente. A aplicação é acompanhada de funcionalidades dinâmicas no frontend, como a utilização do **DataTables** para exibição e manipulação das tarefas.
 
----
-
-## ⚙️ Funcionalidades Implementadas
-
-### API RESTful:
-- **GET /api/tasks**: Retorna todas as tarefas com suporte a filtros.
-- **POST /api/tasks**: Cria uma nova tarefa.
-- **PUT /api/tasks/{id}**: Atualiza uma tarefa existente.
-- **DELETE /api/tasks/{id}**: Exclui uma tarefa.
-
-### Frontend:
-- **DataTables**: Exibição de tarefas com paginação, ordenação e busca dinâmica.
-- **Modais Dinâmicos**: Adição e edição de tarefas por meio de modais com carregamento via AJAX.
-- **Validação Dinâmica**: Feedback para o usuário sobre erros no formulário.
-- **Exportação para CSV**: Exportação das tarefas exibidas na tabela.
-
-### Backend:
-- **Logs**: Registro das operações de criação, edição e exclusão no backend.
-- **Validação no Servidor**: Garantia de dados consistentes.
-- **Persistência de Dados**: Integração com banco de dados **SQL Server** via **Entity Framework Core**.
-
----
+### Passos para Execução
 
 ## 🚀 Como Configurar e Executar o Projeto
 
 ### Pré-requisitos
-- **.NET 6 ou superior**
-- **SQL Server** (local ou remoto)
-- **Node.js** (para gerenciar pacotes JS, como o DataTables)
 
-### Configuração do Projeto
+1. **Instale o .NET SDK 6.0 ou superior**: [Baixar aqui](https://dotnet.microsoft.com/download).
+2. **Instale o SQL Server**: Configure um banco de dados local ou remoto.
+3. **Git**: Para clonar o repositório.
+
+### Passos para Configurar o Projeto
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/jardelva96/TaskManagementApp.git
+   git clone https://github.com/seu-usuario/TaskManagementApp.git
    cd TaskManagementApp
-Configure o Banco de Dados:
 
-Abra o arquivo appsettings.json e edite a string de conexão:
-"ConnectionStrings": {
-    "DefaultConnection": "Server=SEU_SERVIDOR;Database=TaskManagementDb;Trusted_Connection=True;"
-}
-Aplique as Migrações:
+
+Atualize o banco de dados: Utilize o Entity Framework para aplicar as migrações ao banco de dados:
 dotnet ef database update
 
-Execute o Projeto:
+Compile o projeto:
+dotnet build
+
+Execute a aplicação:
 dotnet run
 
-Acesse a aplicação no navegador:
-http://localhost:5000
-🛠️ Tecnologias Utilizadas
-ASP.NET Core MVC
-Entity Framework Core (migrations e persistência)
-SQL Server (armazenamento de dados)
-JavaScript e jQuery
-DataTables (frontend dinâmico)
-Bootstrap 5 (estilização)
+Acesse a aplicação:
+Interface Web: http://localhost:5216/Tasks
+
+🛠 Funcionalidades Implementadas
+
+CRUD de Tarefas:
+Criar, editar, excluir e listar tarefas.
+
+Integração com Banco de Dados:
+Uso do SQL Server para persistência de dados.
+
+Validações:
+Validação no backend usando Data Annotations.
+
+Interface Amigável:
+Tabela com suporte a paginação, busca e ordenação usando DataTables.
+
+Exportação para CSV:
+Exportação de tarefas para arquivo CSV diretamente da interface.
+
+Modais Dinâmicos:
+Criação e edição de tarefas utilizando modais carregados via AJAX.
+
+Documentação da API:
+Endpoints documentados com Swagger.
+
 📂 Estrutura do Projeto
-Controllers: Lógica para gerenciamento das tarefas.
-Views: Renderização do frontend com suporte ao DataTables.
-Services: Camada para encapsular a lógica de negócios e comunicação com o banco de dados.
-Models: Definição das entidades do sistema.
-Migrations: Configurações de versão do banco de dados.
-🔗 Link da Aplicação (opcional)
-A aplicação pode ser acessada localmente em: http://localhost:5000
+Controllers: Gerencia as requisições e respostas do backend.
+Models: Contém as classes que representam as entidades do sistema.
+Views: Páginas renderizadas dinamicamente usando Razor.
+Data: Configuração do banco de dados e migrações.
+wwwroot: Arquivos estáticos, como CSS e JS.
+📋 Endpoints da API
+GET /api/tasks: Retorna todas as tarefas.
+POST /api/tasks: Cria uma nova tarefa.
+PUT /api/tasks/{id}: Atualiza uma tarefa existente.
+DELETE /api/tasks/{id}: Exclui uma tarefa.
 
-📜 Licença
-Este projeto é licenciado sob a MIT License.
+🌟 Contribuições
+Contribuições são bem-vindas! Para contribuir:
 
-👨‍💻 Autor
-Desenvolvido por Jardelva96.
+Faça um fork do repositório.
+Crie uma nova branch:
+git checkout -b minha-feature
 
-### Como Usar
-- Salve este conteúdo em um arquivo chamado `README.md` no diretório principal do seu projeto.
-- Certifique-se de incluir as instruções detalhadas sobre a configuração do banco de dados e as dependências necessárias. 
-- Depois, execute os comandos do Git para garantir que o arquivo seja enviado ao repositório:
-  ```bash
-  git add README.md
-  git commit -m "Adicionado README.md"
-  git push origin main
+Faça suas alterações e commit:
+git commit -m "Descrição da alteração"
+
+Suba a branch:
+git push origin minha-feature
+Abra um Pull Request.
+
+🔗 Links Importantes
+Repositório no GitHub: https://github.com/seu-usuario/TaskManagementApp
+Aplicação Web: http://localhost:5216/Tasks
+
+### Notas:
+- Esse **README** foi feito em Markdown para ser usado no GitHub ou outras plataformas que suportem esse formato.
+- É direto ao ponto e cobre todos os aspectos importantes, desde configuração até funcionalidades.
+- Atualize os links e os detalhes do banco de dados para refletir o ambiente real do projeto.
+
+
+
+
+
