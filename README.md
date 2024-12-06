@@ -62,16 +62,17 @@ Documentação da API:
 Endpoints documentados com Swagger.
 
 📂 Estrutura do Projeto
--Controllers: Gerencia as requisições e respostas do backend.
--Models: Contém as classes que representam as entidades do sistema.
--Views: Páginas renderizadas dinamicamente usando Razor.
--Data: Configuração do banco de dados e migrações.
--wwwroot: Arquivos estáticos, como CSS e JS.
+**Controllers: Gerencia as requisições e respostas do backend.
+**Models: Contém as classes que representam as entidades do sistema.
+**Views: Páginas renderizadas dinamicamente usando Razor.
+**Data: Configuração do banco de dados e migrações.
+**wwwroot: Arquivos estáticos, como CSS e JS.
+
 📋 Endpoints da API
-GET /api/tasks: Retorna todas as tarefas.
-POST /api/tasks: Cria uma nova tarefa.
-PUT /api/tasks/{id}: Atualiza uma tarefa existente.
-DELETE /api/tasks/{id}: Exclui uma tarefa.
+**GET /api/tasks: Retorna todas as tarefas.
+**POST /api/tasks: Cria uma nova tarefa.
+**PUT /api/tasks/{id}: Atualiza uma tarefa existente.
+**DELETE /api/tasks/{id}: Exclui uma tarefa.
 
 🌟 Contribuições
 Contribuições são bem-vindas! Para contribuir:
