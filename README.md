@@ -69,10 +69,10 @@ Endpoints documentados com Swagger.
 - **wwwroot: Arquivos estáticos, como CSS e JS.
 
 📋 Endpoints da API
-**GET /api/tasks: Retorna todas as tarefas.
-**POST /api/tasks: Cria uma nova tarefa.
-**PUT /api/tasks/{id}: Atualiza uma tarefa existente.
-**DELETE /api/tasks/{id}: Exclui uma tarefa.
+- **GET /api/tasks: Retorna todas as tarefas.
+- **POST /api/tasks: Cria uma nova tarefa.
+- **PUT /api/tasks/{id}: Atualiza uma tarefa existente.
+- **DELETE /api/tasks/{id}: Exclui uma tarefa.
 
 🌟 Contribuições
 Contribuições são bem-vindas! Para contribuir:
