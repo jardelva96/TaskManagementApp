@@ -6,45 +6,9 @@ Este é um projeto de gerenciamento de tarefas (Task Management App) desenvolvid
 - **ASP.NET Core**: Framework para desenvolvimento de aplicações web.
 - **Entity Framework Core**: ORM para interagir com o banco de dados.
 - **SQL Server** (ou outro banco de dados configurado): Banco de dados relacional.
-
-- TaskManagementApp/
-- │
-- ├── Controllers/
-- │   ├── TasksController.cs             # Controlador para o frontend (Razor Pages)
-- │   ├── TasksApiController.cs          # Controlador para a API RESTful
-- │
-- ├── Data/
-- │   ├── ApplicationDbContext.cs        # Contexto do Entity Framework Core
-- │
-- ├── Models/
-- │   ├── TaskItem.cs                    # Modelo de dados para as tarefas
-- │
-- ├── Services/
-- │   ├── ITaskService.cs                # Interface para o serviço de tarefas
-- │   ├── TaskService.cs                 # Implementação do serviço de tarefas
-- │
-- ├── Views/
-- │   ├── Tasks/
-- │   │   ├── Index.cshtml               # Página inicial com a lista de tarefas
-- │   │   ├── Create.cshtml              # Página para criação de novas tarefas
-- │   │   ├── Edit.cshtml                # Página para edição de tarefas
-- │   │   ├── Delete.cshtml              # Página para confirmação de exclusão
-- │   │
-- │   ├── Shared/
-- │       ├── _Layout.cshtml             # Layout compartilhado entre as páginas
-- │       ├── _ValidationScriptsPartial.cshtml # Scripts para validação
-- │
-- ├── wwwroot/
-- │   ├── css/                           # Arquivos de estilo CSS
-- │   ├── js/                            # Arquivos JavaScript
-- │   ├── lib/                           # Bibliotecas externas (Bootstrap, DataTables, etc.)
-- │
-- ├── appsettings.json                   # Configurações gerais do projeto
-- ├── Program.cs                         # Configuração inicial do ASP.NET Core
-- ├── TaskManagementApp.csproj           # Arquivo de configuração do projeto
-- ├── launchSettings.json                # Configurações de execução (portas e ambiente)
-- ├── README.md                          # Documentação do projeto
-
+- 
+## Estrutura do Projeto
+TaskManagementApp/ ├── Controllers/ │ ├── TasksController.cs # Controlador para o frontend (Razor Pages) │ ├── TasksApiController.cs # Controlador para a API RESTful │ ├── Data/ │ ├── ApplicationDbContext.cs # Contexto do Entity Framework Core │ ├── Models/ │ ├── TaskItem.cs # Modelo de dados para as tarefas │ ├── Services/ │ ├── ITaskService.cs # Interface para o serviço de tarefas │ ├── TaskService.cs # Implementação do serviço de tarefas │ ├── Views/ │ ├── Tasks/ │ │ ├── Index.cshtml # Página inicial com a lista de tarefas │ │ ├── Create.cshtml # Página para criação de novas tarefas │ │ ├── Edit.cshtml # Página para edição de tarefas │ │ ├── Delete.cshtml # Página para confirmação de exclusão │ │ │ ├── Shared/ │ ├── _Layout.cshtml # Layout compartilhado entre as páginas │ ├── _ValidationScriptsPartial.cshtml # Scripts para validação │ ├── wwwroot/ │ ├── css/ # Arquivos de estilo CSS │ ├── js/ # Arquivos JavaScript │ ├── lib/ # Bibliotecas externas (Bootstrap, DataTables, etc.) │ ├── appsettings.json # Configurações gerais do projeto ├── Program.cs # Configuração inicial do ASP.NET Core ├── launchSettings.json # Configurações de execução (portas e ambiente) ├── TaskManagementApp.csproj # Arquivo de configuração do projeto ├── README.md # Documentação do projeto
 ### Passos para Execução
 
 ## 🚀 Como Configurar e Executar o Projeto
