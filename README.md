@@ -6,7 +6,6 @@ Este é um projeto de gerenciamento de tarefas (Task Management App) desenvolvid
 - **ASP.NET Core**: Framework para desenvolvimento de aplicações web.
 - **Entity Framework Core**: ORM para interagir com o banco de dados.
 - **SQL Server** (ou outro banco de dados configurado): Banco de dados relacional.
-- **Autenticação e Autorização**: Utiliza autenticação baseada em JWT (JSON Web Token) para garantir a segurança.
 
 
 ### Passos para Execução
